@@ -3,13 +3,13 @@ A second level File System ----my "operating system" project/homework
 
 
 This is the big job of my operating system course. It is a simple second level file system imitating that in linux.
-It use two files(imitating disk) to store the infomation -- the "main.dat" and the "data.dat".
+It use two files(imitating the disk) to store the infomation -- the "main.dat" file and the "data.dat" file.
 
 - "main.dat" stores infomation about users and the number of them
 - "data.dat" stores i-nodes, i-node table, bitmap and blocks which directory is also stored in some blocks pertaining to a i-node
 
 special things:
-- use "adduser" to add a user at first and use "exit" to exit the system
+- use "adduser" command to add a user at first and use "exit" command to exit the system
 - must do the "open" command every time you want to have a operation on a file.
 
 Below is the lab report
@@ -17,11 +17,11 @@ Below is the lab report
 
 # 操作系统实验报告
 
-##1.实验目的
+## 1.实验目的
 通过一个简单多用户文件系统的设计，加深理解文件系统内部功能及内部实现
-##2.实验环境
+## 2.实验环境
 在OSX上实验成功，理论上在windows和linux上运行源码也应该能成功。
-##3.实验内容
+## 3.实验内容
 为**Linux**设计一个简单的二级文件系统。要求做到以下几点
 
  1. 可以实现下列几条命令
@@ -36,8 +36,8 @@ Below is the lab report
  2. 列目录时要列出文件名、物理地址、保护码和文件长度；
  3. 源文件可以进行读写保护
 
-##4.程序中使用的数据结构及符号说明
-###a.基本程序说明
+## 4.程序中使用的数据结构及符号说明
+### a.基本程序说明
 - 本文件系统采用两个分区，用两个二进制文件模拟磁盘，分别为main.dat和data.dat
 -   - main.dat储存用户信息及系统的一些信息
     - data.dat储存分块的BitMap表，Inode表以及磁盘分块
@@ -47,7 +47,7 @@ Below is the lab report
 - 保护码的输入输出采用像Linux的三位八进制数的表示方式，比如777表示全1，但在dir中会显示成二进制
 -  目录及其文件表项同样为一个文件，用inode储存于磁盘块中
 -  open即是将文件inode从磁盘读取到内存，close是清除内存
-###b.特殊说明
+### b.特殊说明
 - 添加用户请在初始化时用adduser命令
 - 登录请在初始化的时候用login命令
 - 在登录后使用exit命令退出系统
@@ -55,7 +55,7 @@ Below is the lab report
 - 写文件请在结束是加上$EOF结束符
 - 登录后的命令对大小写不敏感
 
-###c.数据结构及符号说明
+### c.数据结构及符号说明
 ```c++
 #define BLOCK_SIZE 1024 //块大小
 #define BLOCK_NUM 8192  //块数量
@@ -166,14 +166,14 @@ private:
     Bitmap bitmap;
 };
 ```
-##5.源程序及注释
+## 5.源程序及注释
 见附件📎
-##6.程序运行时的初值和运行结果
-###1.注册用户及登录，创建文件
+## 6.程序运行时的初值和运行结果
+### 1.注册用户及登录，创建文件
 ![1.png-45kB][3]
-###2.写入文件以及读出内容
+### 2.写入文件以及读出内容
 ![2.png-25.3kB][4]
-###3.重新登录，查看文件长度等信息，以及删除文件
+### 3.重新登录，查看文件长度等信息，以及删除文件
 ![3.png-47.4kB][5]
 
 
